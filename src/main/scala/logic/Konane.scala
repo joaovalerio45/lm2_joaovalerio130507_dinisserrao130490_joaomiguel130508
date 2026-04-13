@@ -82,7 +82,7 @@ object Konane:
       .map { case (_, _, jumped, finalBoard) => (finalBoard, jumped) }
 
   // T1: randomMove
-  def randomMove(lstOpenCoords: List[Coord2D], rand: Random): (Coord2D, Random) =
+  def randomMove(lstOpenCoords: List[Coord2D], rand: MyRandom): (Coord2D, MyRandom) =
     val (idx, nextRand) = rand.nextInt
     val index = if lstOpenCoords.isEmpty then 0 else ((idx % lstOpenCoords.length) + lstOpenCoords.length) % lstOpenCoords.length
     (lstOpenCoords(index), nextRand)
@@ -102,20 +102,26 @@ object Konane:
   // T3: playRandomly
   def playRandomly(
       board: Board,
-      r: Random,
+      r: MyRandom,
       player: Stone,
       lstOpenCoords: List[Coord2D],
-      f: (List[Coord2D], Random) => (Coord2D, Random)
-  ): (Option[Board], Random, List[Coord2D], Option[Coord2D]) =
-    val legalMoves = allCaptureMoves(board, player)
-    if legalMoves.isEmpty then
-      (None, r, lstOpenCoords, None)
-    else
-      val (idx, nextRand) = r.nextInt
-      val selected = legalMoves(((idx % legalMoves.length) + legalMoves.length) % legalMoves.length)
-      val (from, dest, jumpedStones, finalBoard) = selected
-      val updatedOpenCoords = (from :: jumpedStones ::: lstOpenCoords).filter(_ != dest)
-      (Some(finalBoard), nextRand, updatedOpenCoords, Some(dest))
+      f: (List[Coord2D], MyRandom) => (Coord2D, MyRandom)
+  ): (Option[Board], MyRandom, List[Coord2D], Option[Coord2D]) =
+    val (coordTo, nextRand) = f(lstOpenCoords, r)
+    val playerPieces = board.toList.filter(_._2 == player).map(_._1)
+    
+    @tailrec
+    def tryMoves(pieces: List[Coord2D]): (Option[Board], List[Coord2D]) = pieces match
+      case Nil => (None, lstOpenCoords)
+      case from :: tail =>
+        val (optBoard, newOpen) = play(board, player, from, coordTo, lstOpenCoords)
+        if optBoard.isDefined then (optBoard, newOpen)
+        else tryMoves(tail)
+
+    val (finalBoard, finalOpenCoords) = tryMoves(playerPieces)
+    finalBoard match
+      case Some(boardAfterMove) => (Some(boardAfterMove), nextRand, finalOpenCoords, Some(coordTo))
+      case None => (None, nextRand, lstOpenCoords, None)
 
   // T4: printBoard
   def printBoard(board: Board, rows: Int, cols: Int): Unit =
