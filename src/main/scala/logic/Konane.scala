@@ -83,8 +83,9 @@ object Konane:
 
   // T1: randomMove
   def randomMove(lstOpenCoords: List[Coord2D], rand: MyRandom): (Coord2D, MyRandom) =
+    if lstOpenCoords.isEmpty then return ((-1, -1), rand)
     val (idx, nextRand) = rand.nextInt
-    val index = if lstOpenCoords.isEmpty then 0 else ((idx % lstOpenCoords.length) + lstOpenCoords.length) % lstOpenCoords.length
+    val index = ((idx % lstOpenCoords.length) + lstOpenCoords.length) % lstOpenCoords.length
     (lstOpenCoords(index), nextRand)
 
   // T2: play
