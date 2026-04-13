@@ -1,0 +1,190 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508-test",
+        "directory": "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508",
+        "workspaceDir": "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508",
+        "sources": [
+            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/test/scala",
+            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/test/scala-2.13",
+            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/test/scala-2",
+            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/test/java",
+            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/target/scala-2.13/src_managed/test"
+        ],
+        "dependencies": [
+            "lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508"
+        ],
+        "classpath": [
+            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/scala-2.13/classes",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/2.3.0/scala-parser-combinators_2.13-2.3.0.jar"
+        ],
+        "out": "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508",
+        "classesDir": "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/scala-2.13/test-classes",
+        "resources": [
+            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/test/resources",
+            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/target/scala-2.13/resource_managed/test"
+        ],
+        "scala": {
+            "organization": "org.scala-lang",
+            "name": "scala-compiler",
+            "version": "2.13.12",
+            "options": [
+                
+            ],
+            "jars": [
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.12/scala-compiler-2.13.12.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.12/scala-reflect-2.13.12.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/github/java-diff-utils/java-diff-utils/4.12/java-diff-utils-4.12.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/jline/jline/3.22.0/jline-3.22.0.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar"
+            ],
+            "setup": {
+                "order": "mixed",
+                "addLibraryToBootClasspath": false,
+                "addCompilerToClasspath": false,
+                "addExtraJarsToClasspath": false,
+                "manageBootClasspath": false,
+                "filterLibraryFromClasspath": false
+            },
+            "bridgeJars": [
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala2-sbt-bridge/2.13.12/scala2-sbt-bridge-2.13.12.jar"
+            ]
+        },
+        "java": {
+            "options": [
+                
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "munit.Framework"
+                    ]
+                },
+                {
+                    "names": [
+                        "zio.test.sbt.ZTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "weaver.framework.CatsEffect"
+                    ]
+                },
+                {
+                    "names": [
+                        "hedgehog.sbt.Framework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home",
+                "options": [
+                    "-Duser.dir=/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508"
+                ]
+            },
+            "mainClass": [
+                
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.12",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang.modules",
+                    "name": "scala-parser-combinators_2.13",
+                    "version": "2.3.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-parser-combinators_2.13",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/2.3.0/scala-parser-combinators_2.13-2.3.0.jar"
+                        },
+                        {
+                            "name": "scala-parser-combinators_2.13",
+                            "classifier": "sources",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/2.3.0/scala-parser-combinators_2.13-2.3.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.12",
+                    "configurations": "optional",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "test"
+        ]
+    }
+}
