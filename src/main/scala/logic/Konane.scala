@@ -83,22 +83,24 @@ object Konane:
 
   // T1: randomMove
   def randomMove(lstOpenCoords: List[Coord2D], rand: MyRandom): (Coord2D, MyRandom) =
-    if lstOpenCoords.isEmpty then return ((-1, -1), rand)
-    val (idx, nextRand) = rand.nextInt
-    val index = ((idx % lstOpenCoords.length) + lstOpenCoords.length) % lstOpenCoords.length
-    (lstOpenCoords(index), nextRand)
+    if lstOpenCoords.isEmpty then 
+      ((-1, -1), rand)
+    else
+      val (idx, nextRand) = rand.nextInt
+      val index = ((idx % lstOpenCoords.length) + lstOpenCoords.length) % lstOpenCoords.length
+      (lstOpenCoords(index), nextRand)
 
   // T2: play
   def play(board: Board, player: Stone, coordFrom: Coord2D, coordTo: Coord2D, lstOpenCoords: List[Coord2D]): (Option[Board], List[Coord2D]) =
-    if !board.get(coordFrom).contains(player) then return (None, lstOpenCoords)
-    if board.contains(coordTo) then return (None, lstOpenCoords)
-
-    findCapturePath(board, player, coordFrom, coordTo) match
-      case Some((updatedBoard, jumpedStones)) =>
-        val updatedOpenCoords = (coordFrom :: jumpedStones ::: lstOpenCoords).filter(_ != coordTo)
-        (Some(updatedBoard), updatedOpenCoords)
-      case None =>
-        (None, lstOpenCoords)
+    if !board.get(coordFrom).contains(player) || board.contains(coordTo) then 
+      (None, lstOpenCoords)
+    else
+      findCapturePath(board, player, coordFrom, coordTo) match
+        case Some((updatedBoard, jumpedStones)) =>
+          val updatedOpenCoords = (coordFrom :: jumpedStones ::: lstOpenCoords).filter(_ != coordTo)
+          (Some(updatedBoard), updatedOpenCoords)
+        case None =>
+          (None, lstOpenCoords)
 
   // T3: playRandomly
   def playRandomly(
