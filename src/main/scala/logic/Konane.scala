@@ -1,3 +1,5 @@
+package logic
+
 import scala.annotation.tailrec
 import scala.collection.parallel.immutable.ParMap
 
