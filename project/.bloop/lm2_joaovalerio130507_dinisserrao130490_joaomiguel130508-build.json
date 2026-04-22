@@ -2,15 +2,15 @@
     "version": "1.4.0",
     "project": {
         "name": "lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508-build",
-        "directory": "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project",
-        "workspaceDir": "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project",
+        "directory": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project",
+        "workspaceDir": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project",
         "sources": [
-            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/scala",
-            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/scala-2.12",
-            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/scala-2",
-            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/java",
-            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/scala-sbt-1.0",
-            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/target/scala-2.12/sbt-1.0/src_managed/main"
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/scala",
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/scala-2.12",
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/scala-2",
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/java",
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/scala-sbt-1.0",
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/target/scala-2.12/sbt-1.0/src_managed/main"
         ],
         "dependencies": [
             
@@ -104,11 +104,11 @@
             "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.12.0/jna-platform-5.12.0.jar",
             "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.4.2/config-1.4.2.jar"
         ],
-        "out": "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508-build",
-        "classesDir": "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508-build/scala-2.12/sbt-1.0/classes",
+        "out": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508-build",
+        "classesDir": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508-build/scala-2.12/sbt-1.0/classes",
         "resources": [
-            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/resources",
-            "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/target/scala-2.12/sbt-1.0/resource_managed/main"
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/src/main/resources",
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/target/scala-2.12/sbt-1.0/resource_managed/main"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -215,7 +215,7 @@
             "config": {
                 "home": "/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home",
                 "options": [
-                    "-Duser.dir=/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project"
+                    "-Duser.dir=/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project"
                 ]
             },
             "mainClass": [
@@ -224,11 +224,11 @@
             "runtimeConfig": {
                 "home": "/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home",
                 "options": [
-                    "-Duser.dir=/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project"
+                    "-Duser.dir=/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project"
                 ]
             },
             "classpath": [
-                "/private/var/folders/vf/m8w237g97vd02xp6vdxfj9f80000gn/T/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508-build/scala-2.12/sbt-1.0/classes",
+                "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508-build/scala-2.12/sbt-1.0/classes",
                 "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/2.0.19/sbt-bloop_2.12_1.0-2.0.19.jar",
                 "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/bloop-config_2.12/2.3.3/bloop-config_2.12-2.3.3.jar",
                 "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/plokhotnyuk/jsoniter-scala/jsoniter-scala-core_2.12/2.13.5.2/jsoniter-scala-core_2.12-2.13.5.2.jar",

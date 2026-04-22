@@ -8,6 +8,7 @@ object Konane:
 
   // Método auxiliar para Inicializar o Tabuleiro
   def initBoard(rows: Int, cols: Int): Board =
+    //mudar para recursividade
     val coords = for
       r <- 0 until rows
       c <- 0 until cols
@@ -26,6 +27,7 @@ object Konane:
     board - center - adjacent
 
   def emptyCoords(board: Board, rows: Int, cols: Int): List[Coord2D] =
+    //mudar para recursividade
     (for
       r <- 0 until rows
       c <- 0 until cols
@@ -130,6 +132,7 @@ object Konane:
   def printBoard(board: Board, rows: Int, cols: Int): Unit =
     val header = "  " + (0 until cols).map(c => (c + 'A').toChar).mkString(" ")
     println(header)
+    //mudar para recursividade
     for r <- 0 until rows do
       print(s"$r ")
       for c <- 0 until cols do
