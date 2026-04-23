@@ -37,20 +37,18 @@ object Konane:
 
   private val directions: List[Coord2D] = List((1, 0), (-1, 0), (0, 1), (0, -1))
 
-  private def inBounds(coord: Coord2D, board: Board): Boolean =
-    val rows = board.keys.map(_._1)
-    val cols = board.keys.map(_._2)
+  private def inBounds(coord: Coord2D, rows: Int, cols: Int): Boolean =
     val (r, c) = coord
-    r >= rows.min && r <= rows.max && c >= cols.min && c <= cols.max
+    r >= 0 && r < rows && c >= 0 && c < cols
 
   private def nextPosition(coord: Coord2D, direction: Coord2D): Coord2D =
     (coord._1 + direction._1, coord._2 + direction._2)
 
-  private def immediateJumpMoves(current: Coord2D, board: Board, player: Stone): List[(Coord2D, Coord2D)] =
+  private def immediateJumpMoves(current: Coord2D, board: Board, player: Stone, rows: Int, cols: Int): List[(Coord2D, Coord2D)] =
     directions.flatMap { dir =>
       val jumped = nextPosition(current, dir)
       val landing = nextPosition(jumped, dir)
-      if board.get(jumped).exists(_ != player) && inBounds(landing, board) && !board.contains(landing) then
+      if board.get(jumped).exists(_ != player) && inBounds(landing, rows, cols) && !board.contains(landing) then
         List((landing, jumped))
       else
         Nil
@@ -60,26 +58,28 @@ object Konane:
       current: Coord2D,
       boardState: Board,
       player: Stone,
-      captured: List[Coord2D]
+      captured: List[Coord2D],
+      rows: Int,
+      cols: Int
   ): List[(Coord2D, List[Coord2D], Board)] =
-    val immediate = immediateJumpMoves(current, boardState, player)
+    val immediate = immediateJumpMoves(current, boardState, player, rows, cols)
     val currentPaths = if captured.nonEmpty then List((current, captured.reverse, boardState)) else Nil
 
     val nextPaths = immediate.flatMap { case (landing, jumped) =>
       val movedBoard = boardState - current - jumped + (landing -> player)
-      collectCapturePaths(landing, movedBoard, player, jumped :: captured)
+      collectCapturePaths(landing, movedBoard, player, jumped :: captured, rows, cols)
     }
 
     currentPaths ++ nextPaths
 
-  def allCaptureMoves(board: Board, player: Stone): List[(Coord2D, Coord2D, List[Coord2D], Board)] =
+  def allCaptureMoves(board: Board, player: Stone, rows: Int, cols: Int): List[(Coord2D, Coord2D, List[Coord2D], Board)] =
     board.toList.collect {
       case (from, stone) if stone == player =>
-        collectCapturePaths(from, board, player, Nil).map { case (dest, jumped, finalBoard) => (from, dest, jumped, finalBoard) }
+        collectCapturePaths(from, board, player, Nil, rows, cols).map { case (dest, jumped, finalBoard) => (from, dest, jumped, finalBoard) }
     }.flatten
 
-  private def findCapturePath(board: Board, player: Stone, from: Coord2D, to: Coord2D): Option[(Board, List[Coord2D])] =
-    allCaptureMoves(board, player)
+  private def findCapturePath(board: Board, player: Stone, from: Coord2D, to: Coord2D, rows: Int, cols: Int): Option[(Board, List[Coord2D])] =
+    allCaptureMoves(board, player, rows, cols)
       .find { case (start, dest, _, _) => start == from && dest == to }
       .map { case (_, _, jumped, finalBoard) => (finalBoard, jumped) }
 
@@ -93,11 +93,11 @@ object Konane:
       (lstOpenCoords(index), nextRand)
 
   // T2: play
-  def play(board: Board, player: Stone, coordFrom: Coord2D, coordTo: Coord2D, lstOpenCoords: List[Coord2D]): (Option[Board], List[Coord2D]) =
+  def play(board: Board, player: Stone, coordFrom: Coord2D, coordTo: Coord2D, lstOpenCoords: List[Coord2D], rows: Int, cols: Int): (Option[Board], List[Coord2D]) =
     if !board.get(coordFrom).contains(player) || board.contains(coordTo) then 
       (None, lstOpenCoords)
     else
-      findCapturePath(board, player, coordFrom, coordTo) match
+      findCapturePath(board, player, coordFrom, coordTo, rows, cols) match
         case Some((updatedBoard, jumpedStones)) =>
           val updatedOpenCoords = (coordFrom :: jumpedStones ::: lstOpenCoords).filter(_ != coordTo)
           (Some(updatedBoard), updatedOpenCoords)
@@ -110,7 +110,9 @@ object Konane:
       r: MyRandom,
       player: Stone,
       lstOpenCoords: List[Coord2D],
-      f: (List[Coord2D], MyRandom) => (Coord2D, MyRandom)
+      f: (List[Coord2D], MyRandom) => (Coord2D, MyRandom),
+      rows: Int,
+      cols: Int
   ): (Option[Board], MyRandom, List[Coord2D], Option[Coord2D]) =
     val (coordTo, nextRand) = f(lstOpenCoords, r)
     val playerPieces = board.toList.filter(_._2 == player).map(_._1)
@@ -119,7 +121,7 @@ object Konane:
     def tryMoves(pieces: List[Coord2D]): (Option[Board], List[Coord2D]) = pieces match
       case Nil => (None, lstOpenCoords)
       case from :: tail =>
-        val (optBoard, newOpen) = play(board, player, from, coordTo, lstOpenCoords)
+        val (optBoard, newOpen) = play(board, player, from, coordTo, lstOpenCoords, rows, cols)
         if optBoard.isDefined then (optBoard, newOpen)
         else tryMoves(tail)
 
