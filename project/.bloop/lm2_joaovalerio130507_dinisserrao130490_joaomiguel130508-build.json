@@ -213,7 +213,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home",
+                "home": "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home",
                 "options": [
                     "-Duser.dir=/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project"
                 ]
@@ -222,7 +222,7 @@
                 
             ],
             "runtimeConfig": {
-                "home": "/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home",
+                "home": "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home",
                 "options": [
                     "-Duser.dir=/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/project"
                 ]
