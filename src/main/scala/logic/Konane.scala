@@ -4,15 +4,12 @@ import scala.annotation.tailrec
 import scala.collection.parallel.immutable.ParMap
 import scala.collection.parallel.CollectionConverters.*
 
-object Konane:
+object Konane {
+    
 
   // Método auxiliar para Inicializar o Tabuleiro
-  def initBoard(rows: Int, cols: Int): Board =
-    //mudar para recursividade
-    val coords = for
-      r <- 0 until rows
-      c <- 0 until cols
-    yield (r, c)
+def initBoard(rows: Int, cols: Int): Board =
+    val coords = List.tabulate(rows, cols)((r, c) => (r, c)).flatten
     
     val board = coords.map { case (r, c) =>
       val stone = if ((r + c) % 2 == 0) Stone.Black else Stone.White
@@ -26,15 +23,17 @@ object Konane:
     val adjacent = (center._1, center._2 + 1)
     board - center - adjacent
 
-  def emptyCoords(board: Board, rows: Int, cols: Int): List[Coord2D] =
-    //mudar para recursividade
-    (for
-      r <- 0 until rows
-      c <- 0 until cols
-      coord = (r, c)
-      if !board.contains(coord)
-    yield coord).toList
-
+  def emptyCoords(board: Board, rows: Int, cols: Int): List[Coord2D] = {
+  @tailrec
+    def loop(r: Int, c: Int, acc: List[Coord2D]): List[Coord2D] =
+      if r >= rows then acc
+      else if c >= cols then loop(r + 1, 0, acc)
+      else
+        val newAcc = if !board.contains((r, c)) then (r, c) :: acc else acc
+        loop(r, c + 1, newAcc)
+        
+    loop(0, 0, Nil).reverse
+  }
   private val directions: List[Coord2D] = List((1, 0), (-1, 0), (0, 1), (0, -1))
 
   private def inBounds(coord: Coord2D, rows: Int, cols: Int): Boolean =
@@ -73,10 +72,10 @@ object Konane:
     currentPaths ++ nextPaths
 
   def allCaptureMoves(board: Board, player: Stone, rows: Int, cols: Int): List[(Coord2D, Coord2D, List[Coord2D], Board)] =
-    board.toList.collect {
+    board.collect {
       case (from, stone) if stone == player =>
         collectCapturePaths(from, board, player, Nil, rows, cols).map { case (dest, jumped, finalBoard) => (from, dest, jumped, finalBoard) }
-    }.flatten
+    }.flatten.toList
 
   private def findCapturePath(board: Board, player: Stone, from: Coord2D, to: Coord2D, rows: Int, cols: Int): Option[(Board, List[Coord2D])] =
     allCaptureMoves(board, player, rows, cols)
@@ -130,16 +129,22 @@ object Konane:
       case Some(boardAfterMove) => (Some(boardAfterMove), nextRand, finalOpenCoords, Some(coordTo))
       case None => (None, nextRand, lstOpenCoords, None)
 
-  // T4: printBoard
-  def printBoard(board: Board, rows: Int, cols: Int): Unit =
+ def boardToString(board: Board, rows: Int, cols: Int): String =
     val header = "  " + (0 until cols).map(c => (c + 'A').toChar).mkString(" ")
-    println(header)
-    //mudar para recursividade
-    for r <- 0 until rows do
-      print(s"$r ")
-      for c <- 0 until cols do
-        board.get((r, c)) match
-          case Some(Stone.Black) => print("B ")
-          case Some(Stone.White) => print("W ")
-          case None => print(". ")
-      println()
+
+    @tailrec
+    def buildRows(r: Int, acc: List[String]): List[String] =
+      if r >= rows then acc 
+      else
+        val rowStr = (0 until cols).map { c =>
+          board.get((r, c)) match
+            case Some(Stone.Black) => "B"
+            case Some(Stone.White) => "W"
+            case None => "."
+        }.mkString(s"$r ", " ", "")
+        
+        buildRows(r + 1, acc :+ rowStr) 
+
+    val allRows = buildRows(0, Nil).mkString("\n")
+    s"$header\n$allRows"
+}
