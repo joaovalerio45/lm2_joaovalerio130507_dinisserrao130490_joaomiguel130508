@@ -103,6 +103,8 @@ object Konane {
         case None =>
           (None, lstOpenCoords)
 
+// ... (código do T2: play) ...
+
   // T3: playRandomly
   def playRandomly(
       board: Board,
@@ -113,21 +115,33 @@ object Konane {
       rows: Int,
       cols: Int
   ): (Option[Board], MyRandom, List[Coord2D], Option[Coord2D]) =
-    val (coordTo, nextRand) = f(lstOpenCoords, r)
-    val playerPieces = board.toList.filter(_._2 == player).map(_._1)
     
-    @tailrec
-    def tryMoves(pieces: List[Coord2D]): (Option[Board], List[Coord2D]) = pieces match
-      case Nil => (None, lstOpenCoords)
-      case from :: tail =>
-        val (optBoard, newOpen) = play(board, player, from, coordTo, lstOpenCoords, rows, cols)
-        if optBoard.isDefined then (optBoard, newOpen)
-        else tryMoves(tail)
+    val playerPieces = board.toList.filter(_._2 == player).map(_._1).sorted
 
-    val (finalBoard, finalOpenCoords) = tryMoves(playerPieces)
-    finalBoard match
-      case Some(boardAfterMove) => (Some(boardAfterMove), nextRand, finalOpenCoords, Some(coordTo))
-      case None => (None, nextRand, lstOpenCoords, None)
+    @tailrec
+    def tryAllOpenSpaces(openSpaces: List[Coord2D], currentRng: MyRandom): (Option[Board], MyRandom, List[Coord2D], Option[Coord2D]) =
+      if openSpaces.isEmpty then
+        (None, currentRng, lstOpenCoords, None) 
+      else
+        val (coordTo, nextRng) = f(openSpaces, currentRng)
+
+        @tailrec
+        def tryPieces(pieces: List[Coord2D]): (Option[Board], List[Coord2D]) = pieces match
+          case Nil => (None, lstOpenCoords)
+          case from :: tail =>
+            val (optBoard, newOpen) = play(board, player, from, coordTo, lstOpenCoords, rows, cols)
+            if optBoard.isDefined then (optBoard, newOpen)
+            else tryPieces(tail)
+
+        val (optBoard, finalOpenCoords) = tryPieces(playerPieces)
+        
+        if optBoard.isDefined then
+          (optBoard, nextRng, finalOpenCoords, Some(coordTo))
+        else
+          val remainingSpaces = openSpaces.filter(_ != coordTo)
+          tryAllOpenSpaces(remainingSpaces, nextRng)
+
+    tryAllOpenSpaces(lstOpenCoords, r)
 
   def boardToString(board: Board, rows: Int, cols: Int): String =
     val header = "  " + (0 until cols).map(c => (c + 'A').toChar).mkString(" ")
