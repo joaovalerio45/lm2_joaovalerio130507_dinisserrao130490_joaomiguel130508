@@ -8,15 +8,15 @@ object Konane {
     
 
   // Método auxiliar para Inicializar o Tabuleiro
-def initBoard(rows: Int, cols: Int): Board =
-    val coords = List.tabulate(rows, cols)((r, c) => (r, c)).flatten
-    
-    val board = coords.map { case (r, c) =>
-      val stone = if ((r + c) % 2 == 0) Stone.Black else Stone.White
-      (r, c) -> stone
-    }.toMap.par
+  def initBoard(rows: Int, cols: Int): Board =
+      val coords = List.tabulate(rows, cols)((r, c) => (r, c)).flatten
+      
+      val board = coords.map { case (r, c) =>
+        val stone = if ((r + c) % 2 == 0) Stone.Black else Stone.White
+        (r, c) -> stone
+      }.toMap.par
 
-    removeInitialPair(board, rows, cols)
+      removeInitialPair(board, rows, cols)
 
   private def removeInitialPair(board: Board, rows: Int, cols: Int): Board =
     val center = (rows / 2 - 1, cols / 2 - 1)
@@ -129,7 +129,7 @@ def initBoard(rows: Int, cols: Int): Board =
       case Some(boardAfterMove) => (Some(boardAfterMove), nextRand, finalOpenCoords, Some(coordTo))
       case None => (None, nextRand, lstOpenCoords, None)
 
- def boardToString(board: Board, rows: Int, cols: Int): String =
+  def boardToString(board: Board, rows: Int, cols: Int): String =
     val header = "  " + (0 until cols).map(c => (c + 'A').toChar).mkString(" ")
 
     @tailrec
