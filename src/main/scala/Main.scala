@@ -50,9 +50,6 @@ object Main extends App:
         println("❌ Opção inválida.")
         mainMenu(config)
 
-  // ==========================================
-  // MENU DE CONFIGURAÇÕES
-  // ==========================================
   @tailrec
   def settingsMenu(config: GameConfig): GameConfig =
     println("\n--- CONFIGURAÇÕES ---")
@@ -91,9 +88,6 @@ object Main extends App:
         println("❌ Opção inválida.")
         settingsMenu(config)
 
-  // ==========================================
-  // MOTOR DO JOGO
-  // ==========================================
   @tailrec
   def gameLoop(
                 state: GameState,
@@ -137,7 +131,6 @@ object Main extends App:
           else if elapsed > config.timeLimitMs then
             val adversario = if state.currentPlayer == Stone.Black then Stone.White else Stone.Black
             println(s"⏰ TEMPO ESGOTADO! Demorou ${elapsed / 1000}s.")
-            // Igualámos o comportamento da GUI: passa o turno
             val nextState = state.copy(currentPlayer = adversario, midTurnPiece = None)
             gameLoop(nextState, state :: history, turn + 1, config)
 
@@ -198,13 +191,10 @@ object Main extends App:
                 gameLoop(state, history, turn, config)
 
         else
-          // ---------------------------------------------------------
-          // TURNO DO COMPUTADOR
-          // ---------------------------------------------------------
           println("Computador a pensar...")
           val startTime = System.currentTimeMillis()
 
-          // Para a TUI associámos o smartMove mas vamos delegar apenas à allCaptureMoves como fizemos na GUI para simplificar
+        
           val (optBoard, nextRng, nextOpenSpaces) = if config.difficulty == "Difícil" then
             val allMoves = Konane.allCaptureMoves(state.board, state.currentPlayer, config.rows, config.cols)
             if allMoves.isEmpty then (None, state.rng, state.openSpaces)

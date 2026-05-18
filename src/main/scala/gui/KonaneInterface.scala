@@ -33,7 +33,7 @@ class KonaneInterface extends Application {
   var history: List[GameState] = Nil
 
   var isVsBot: Boolean = false
-  var rng: MyRandom = MyRandom(System.currentTimeMillis())
+  var rng: MyRandom = MyRandom(1234L)
   var maxTimePerMove: Int = 30 
   var timeRemaining: Int = 30
   var botDifficulty: String = "Fácil" 

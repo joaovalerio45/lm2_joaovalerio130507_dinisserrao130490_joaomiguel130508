@@ -7,7 +7,6 @@ import scala.collection.parallel.CollectionConverters.*
 object Konane {
     
 
-  // Método auxiliar para Inicializar o Tabuleiro
   def initBoard(rows: Int, cols: Int): Board =
       val coords = List.tabulate(rows, cols)((r, c) => (r, c)).flatten
       
@@ -95,12 +94,9 @@ object Konane {
     if lstOpenCoords.isEmpty then
       ((-1, -1), rand)
     else
-      // Em vez de ser aleatório, o PC tem uma heurística determinística.
-      // Por exemplo: escolhe sempre a casa que está mais perto do fim da lista,
-      // o que muda completamente a forma como o jogo se desenrola!
+
       (lstOpenCoords.last, rand)
 
-  // T2: play
   def play(board: Board, player: Stone, coordFrom: Coord2D, coordTo: Coord2D, lstOpenCoords: List[Coord2D], rows: Int, cols: Int): (Option[Board], List[Coord2D]) =
     if !board.get(coordFrom).contains(player) || board.contains(coordTo) then 
       (None, lstOpenCoords)
@@ -112,9 +108,6 @@ object Konane {
         case None =>
           (None, lstOpenCoords)
 
-// ... (código do T2: play) ...
-
-  // T3: playRandomly
   def playRandomly(
       board: Board,
       r: MyRandom,
@@ -174,22 +167,16 @@ object Konane {
     
     // T5: Verificar Vencedor
   def getWinner(board: Board, currentPlayerTurn: Stone, rows: Int, cols: Int): Option[Stone] =
-    // Chamamos a função pura para obter todas as jogadas possíveis deste jogador
     val possibleMoves = allCaptureMoves(board, currentPlayerTurn, rows, cols)
     
-    // Se a lista tiver elementos, o jogo continua (devolvemos None)
     if possibleMoves.nonEmpty then 
       None 
     else
-      // Se a lista estiver vazia, este jogador perdeu. 
-      // Usamos Pattern Matching para descobrir quem é o adversário (o vencedor!)
       currentPlayerTurn match
         case Stone.Black => Some(Stone.White)
         case Stone.White => Some(Stone.Black)
       
-  // T6: Função Pura de Undo
   def undo(history: List[GameState]): Option[List[GameState]] =
-    // Precisamos de pelo menos 3 estados para anular a nossa jogada e a do computador
     if history.length >= 3 then
       Some(history.drop(2))
     else
