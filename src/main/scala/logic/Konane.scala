@@ -177,4 +177,12 @@ object Konane {
       currentPlayerTurn match
         case Stone.Black => Some(Stone.White)
         case Stone.White => Some(Stone.Black)
+      
+  // T6: Função Pura de Undo
+  def undo(history: List[GameState]): Option[List[GameState]] =
+    // Precisamos de pelo menos 3 estados para anular a nossa jogada e a do computador
+    if history.length >= 3 then
+      Some(history.drop(2))
+    else
+      None
 }
