@@ -6,27 +6,21 @@ object Main extends App:
 
   val MovePattern = """(\d+)\s+(\d+)\s+(\d+)\s+(\d+)""".r
 
-  // Configuração inicial (agora com 1 Jogador por defeito)
   val defaultConfig = GameConfig(rows = 6, cols = 6, timeLimitMs = 15000L, difficulty = "Fácil", numPlayers = 1)
   mainMenu(defaultConfig)
 
-  // ==========================================
-  // FUNÇÃO SEGURA PARA LER DO TERMINAL
-  // ==========================================
+
   def safeReadLine(): String = {
     val input = StdIn.readLine()
-    // Se o SBT desligar o input ou o ficheiro de teste terminar, evita o NullPointerException e sai limpadamente
     if (input == null) sys.exit(0) 
     input.trim
   }
 
-  // ==========================================
-  // MENU PRINCIPAL
-  // ==========================================
+
   @tailrec
   def mainMenu(config: GameConfig): Unit =
     println("\n" + "="*40)
-    println("        KŌNANE - MENU PRINCIPAL       ")
+    println("        KONANE - MENU PRINCIPAL       ")
     println("="*40)
     val modeStr = if config.numPlayers == 1 then "1 Jogador (vs Computador)" else "2 Jogadores (Humano vs Humano)"
     println(s"1. Jogar [$modeStr]")

@@ -12,18 +12,15 @@ import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.animation.{KeyFrame, Timeline, PauseTransition, Animation}
 import javafx.util.Duration
+
 import scala.annotation.tailrec
 import scala.collection.parallel.immutable.ParMap
-
-import scala.compiletime.uninitialized // Importação para o Scala 3.4+
+import scala.compiletime.uninitialized
 
 import logic.*
 
 class KonaneInterface extends Application {
   
-  // ==========================================
-  // ESTADO DA INTERFACE (Imperative Shell)
-  // ==========================================
   val rows = 6 
   val cols = 6 
   
@@ -35,19 +32,16 @@ class KonaneInterface extends Application {
   var forcedCaptureCoord: Option[Coord2D] = None 
   var history: List[GameState] = Nil
 
-  // Definições de Configuração
   var isVsBot: Boolean = false
   var rng: MyRandom = MyRandom(System.currentTimeMillis())
   var maxTimePerMove: Int = 30 
   var timeRemaining: Int = 30
   var botDifficulty: String = "Fácil" 
 
-  // Componentes Visuais
   val boardGrid = new GridPane()
   val turnLabel = new Label("Turno: Pretas")
   val timerLabel = new Label("Tempo: 30s")
   
-  // CORREÇÃO DOS WARNINGS DO SCALA 3.4+
   var gameTimeline: Timeline = uninitialized
   var mainStage: Stage = uninitialized
 
@@ -56,9 +50,7 @@ class KonaneInterface extends Application {
     showMainMenu()
   }
 
-  // ==========================================
-  // MENU CONFIGURAÇÃO PRINCIPAL (6x6)
-  // ==========================================
+
   def showMainMenu(): Unit = {
     stopTimer()
     val menuLayout = new VBox(15)
@@ -111,9 +103,7 @@ class KonaneInterface extends Application {
     mainStage.show()
   }
 
-  // ==========================================
-  // VISTA DO JOGO (Scene Graph)
-  // ==========================================
+
   def showGameView(): Unit = {
     val root = new BorderPane()
     root.setPadding(new Insets(15))
@@ -164,11 +154,11 @@ class KonaneInterface extends Application {
               rng = head.rng
               openSpaces = head.openSpaces
               currentPlayer = head.currentPlayer
-              forcedCaptureCoord = head.midTurnPiece // Extrai a peça do meio do turno
+              forcedCaptureCoord = head.midTurnPiece
             case Nil =>
               resetGameEngine()
           }
-          selectedCoord = forcedCaptureCoord // Repõe a seleção visual na peça correta
+          selectedCoord = forcedCaptureCoord
           resetTimer()
           turnLabel.setText(s"Turno: $currentPlayer")
           updateBoardUI()
@@ -191,15 +181,12 @@ class KonaneInterface extends Application {
     selectedCoord = None
     forcedCaptureCoord = None
     
-    // CORREÇÃO: Ordem (board, rng, openSpaces, currentPlayer, midTurnPiece)
     history = List(GameState(currentBoard, rng, openSpaces, currentPlayer, forcedCaptureCoord))
     resetTimer()
     turnLabel.setText(s"Turno: $currentPlayer")
   }
 
-  // ==========================================
-  // SISTEMA DO TEMPORIZADOR
-  // ==========================================
+
   def startTimer(): Unit = {
     stopTimer()
     timeRemaining = maxTimePerMove
@@ -231,9 +218,7 @@ class KonaneInterface extends Application {
     if (gameTimeline != null) gameTimeline.playFromStart()
   }
 
-  // ==========================================
-  // CAIXA DE MENSAGEM DE FIM DE JOGO
-  // ==========================================
+  
   private def showGameOverAlert(title: String, content: String): Unit = {
     val alert = new Alert(AlertType.INFORMATION)
     alert.setTitle(title)
@@ -247,9 +232,6 @@ class KonaneInterface extends Application {
     showMainMenu()
   }
 
-  // ==========================================
-  // LÓGICA DE SELECÇÃO E JOGADA
-  // ==========================================
   def handleCellClick(r: Int, c: Int): Unit = {
     if (isVsBot && currentPlayer == Stone.White) return 
 
@@ -373,9 +355,7 @@ class KonaneInterface extends Application {
     }
   }
 
-  // ==========================================
-  // JOGADA DO BOT (FÁCIL / DIFÍCIL)
-  // ==========================================
+
   def triggerBotExecution(): Unit = {
     turnLabel.setText("Computador a calcular...")
     val pause = new PauseTransition(Duration.seconds(0.7))
@@ -409,9 +389,7 @@ class KonaneInterface extends Application {
     pause.play()
   }
 
-  // ==========================================
-  // VISUALIZAR ALTERNATIVAS VÁLIDAS
-  // ==========================================
+
   def updateBoardUI(): Unit = {
     boardGrid.getChildren.clear()
 
