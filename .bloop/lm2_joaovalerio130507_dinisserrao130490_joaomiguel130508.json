@@ -8,43 +8,49 @@
             "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/main/scala",
             "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/main/scala-3",
             "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/main/java",
-            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/target/scala-3.2.2/src_managed/main"
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/target/scala-3.8.1/src_managed/main"
         ],
         "dependencies": [
             
         ],
         "classpath": [
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.2.2/scala3-library_3-3.2.2.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.8.1/scala3-library_3-3.8.1.jar",
             "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar"
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/3.8.1/scala-library-3.8.1.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac-aarch64.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac-aarch64.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac-aarch64.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac-aarch64.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2.jar"
         ],
         "out": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508",
-        "classesDir": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/scala-3.2.2/classes",
+        "classesDir": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/scala-3.8.1/classes",
         "resources": [
             "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/src/main/resources",
-            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/target/scala-3.2.2/resource_managed/main"
+            "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/target/scala-3.8.1/resource_managed/main"
         ],
         "scala": {
             "organization": "org.scala-lang",
             "name": "scala-compiler",
-            "version": "3.2.2",
+            "version": "3.8.1",
             "options": [
                 
             ],
             "jars": [
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.2.2/scala3-library_3-3.2.2.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-compiler_3/3.2.2/scala3-compiler_3-3.2.2.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-interfaces/3.2.2/scala3-interfaces-3.2.2.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/tasty-core_3/3.2.2/tasty-core_3-3.2.2.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-asm/9.3.0-scala-1/scala-asm-9.3.0-scala-1.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/compiler-interface/1.3.5/compiler-interface-1.3.5.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-reader/3.19.0/jline-reader-3.19.0.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-terminal/3.19.0/jline-terminal-3.19.0.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-terminal-jna/3.19.0/jline-terminal-jna-3.19.0.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.7.0/protobuf-java-3.7.0.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-interface/1.3.0/util-interface-1.3.0.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.3.1/jna-5.3.1.jar"
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.8.1/scala3-library_3-3.8.1.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/3.8.1/scala-library-3.8.1.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-compiler_3/3.8.1/scala3-compiler_3-3.8.1.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-interfaces/3.8.1/scala3-interfaces-3.8.1.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/tasty-core_3/3.8.1/tasty-core_3-3.8.1.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-asm/9.9.0-scala-1/scala-asm-9.9.0-scala-1.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/compiler-interface/1.10.7/compiler-interface-1.10.7.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-interface/1.10.7/util-interface-1.10.7.jar"
             ],
             "setup": {
                 "order": "mixed",
@@ -55,7 +61,7 @@
                 "filterLibraryFromClasspath": false
             },
             "bridgeJars": [
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-sbt-bridge/3.2.2/scala3-sbt-bridge-3.2.2.jar"
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-sbt-bridge/3.8.1/scala3-sbt-bridge-3.8.1.jar"
             ]
         },
         "java": {
@@ -140,10 +146,21 @@
                 ]
             },
             "classpath": [
-                "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/scala-3.2.2/classes",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.2.2/scala3-library_3-3.2.2.jar",
+                "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/scala-3.8.1/classes",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.8.1/scala3-library_3-3.8.1.jar",
                 "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar"
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/3.8.1/scala-library-3.8.1.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac-aarch64.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac-aarch64.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac-aarch64.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac-aarch64.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2.jar"
             ]
         },
         "resolution": {
@@ -151,17 +168,17 @@
                 {
                     "organization": "org.scala-lang",
                     "name": "scala3-library_3",
-                    "version": "3.2.2",
+                    "version": "3.8.1",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "scala3-library_3",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.2.2/scala3-library_3-3.2.2.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.8.1/scala3-library_3-3.8.1.jar"
                         },
                         {
                             "name": "scala3-library_3",
                             "classifier": "sources",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.2.2/scala3-library_3-3.2.2-sources.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.8.1/scala3-library_3-3.8.1-sources.jar"
                         }
                     ]
                 },
@@ -185,17 +202,83 @@
                 {
                     "organization": "org.scala-lang",
                     "name": "scala-library",
-                    "version": "2.13.10",
+                    "version": "3.8.1",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "scala-library",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/3.8.1/scala-library-3.8.1.jar"
                         },
                         {
                             "name": "scala-library",
                             "classifier": "sources",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10-sources.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/3.8.1/scala-library-3.8.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-graphics",
+                    "version": "17.0.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "javafx-graphics",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2.jar"
+                        },
+                        {
+                            "name": "javafx-graphics",
+                            "classifier": "sources",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-sources.jar"
+                        },
+                        {
+                            "name": "javafx-graphics",
+                            "classifier": "mac",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-controls",
+                    "version": "17.0.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "javafx-controls",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2.jar"
+                        },
+                        {
+                            "name": "javafx-controls",
+                            "classifier": "sources",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-sources.jar"
+                        },
+                        {
+                            "name": "javafx-controls",
+                            "classifier": "mac",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-base",
+                    "version": "17.0.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "javafx-base",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2.jar"
+                        },
+                        {
+                            "name": "javafx-base",
+                            "classifier": "sources",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-sources.jar"
+                        },
+                        {
+                            "name": "javafx-base",
+                            "classifier": "mac",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac.jar"
                         }
                     ]
                 }

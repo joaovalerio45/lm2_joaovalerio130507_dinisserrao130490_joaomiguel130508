@@ -48,6 +48,5 @@ object Main extends App:
           case None =>
             println("Erro inesperado: O getWinner disse que havia jogadas, mas a peça falhou.")
 
-  // 3. DAR O TIRO DE PARTIDA (Era isto que faltava!)
   Thread.sleep(2000)
   gameLoop(initialBoard, initialRng, initialOpenSpaces, Stone.Black, 1)
