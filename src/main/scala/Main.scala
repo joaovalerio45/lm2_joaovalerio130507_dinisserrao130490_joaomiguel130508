@@ -23,8 +23,7 @@ object Main extends App:
       currentPlayer: Stone,
       turn: Int
   ): Unit =
-    
-    // T5: Verificar se alguém já perdeu ANTES de jogar
+
     Konane.getWinner(board, currentPlayer, rows, cols) match
       case Some(winner) =>
         println(s"\n❌ FIM DE JOGO no Turno $turn!")

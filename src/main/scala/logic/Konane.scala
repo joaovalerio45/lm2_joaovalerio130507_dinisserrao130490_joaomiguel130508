@@ -161,6 +161,8 @@ object Konane {
 
     val allRows = buildRows(0, Nil).mkString("\n")
     s"$header\n$allRows"
+
+    
     // T5: Verificar Vencedor
   def getWinner(board: Board, currentPlayerTurn: Stone, rows: Int, cols: Int): Option[Stone] =
     // Chamamos a função pura para obter todas as jogadas possíveis deste jogador
