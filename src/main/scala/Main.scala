@@ -4,14 +4,17 @@ import scala.annotation.tailrec
 object Main extends App:
   val rows = 6
   val cols = 6
-
-  val initialRng = MyRandom(1234L)
+  
+  // 1. SETUP INICIAL
+  val initialRng = MyRandom(123L) // A nossa semente determinística
   val initialBoard = Konane.initBoard(rows, cols)
   val initialOpenSpaces = Konane.emptyCoords(initialBoard, rows, cols)
   
+  println("--- INÍCIO DA SIMULAÇÃO ALEATÓRIA (KŌNANE) ---")
   println("Tabuleiro Inicial:")
   println(Konane.boardToString(initialBoard, rows, cols))
   
+  // 2. O MOTOR DO JOGO (Com a T5 incluída)
   @tailrec
   def gameLoop(
       board: Board, 
@@ -20,32 +23,32 @@ object Main extends App:
       currentPlayer: Stone,
       turn: Int
   ): Unit =
-    println(s"\n--- Turno $turn: Vez das $currentPlayer ---")
     
-    Thread.sleep(1000) 
-    
-    // placeholder ( random plays consecutivas)
-    val (optBoard, nextRng, nextOpenSpaces, optDest) = 
-      Konane.playRandomly(board, rng, currentPlayer, openSpaces, Konane.randomMove, rows, cols)
-      
-    optBoard match
-      case Some(newBoard) =>
-        println(s">> As $currentPlayer saltaram e aterraram na casa ${optDest.get}")
-        println(Konane.boardToString(newBoard, rows, cols))
-        
-        val nextPlayer = if currentPlayer == Stone.Black then Stone.White else Stone.Black
-        
-        gameLoop(newBoard, nextRng, nextOpenSpaces, nextPlayer, turn + 1)
+    // T5: Verificar se alguém já perdeu ANTES de jogar
+    Konane.getWinner(board, currentPlayer, rows, cols) match
+      case Some(winner) =>
+        println(s"\n❌ FIM DE JOGO no Turno $turn!")
+        println(s"As $currentPlayer não têm mais jogadas de captura possíveis.")
+        println(s"🏆 AS $winner VENCEM A PARTIDA! 🏆")
         
       case None =>
-        val winner = if currentPlayer == Stone.Black then Stone.White else Stone.Black
-        println(s"\n❌ FIM DE JOGO! As $currentPlayer não têm mais jogadas possíveis.")
-        println(s"🏆 AS $winner VENCEM A PARTIDA! 🏆")
+        println(s"\n--- Turno $turn: Vez das $currentPlayer ---")
+        Thread.sleep(1000) 
+        
+        val (optBoard, nextRng, nextOpenSpaces, optDest) = 
+          Konane.playRandomly(board, rng, currentPlayer, openSpaces, Konane.randomMove, rows, cols)
+          
+        optBoard match
+          case Some(newBoard) =>
+            println(s">> As $currentPlayer saltaram e aterraram na casa ${optDest.get}")
+            println(Konane.boardToString(newBoard, rows, cols))
+            
+            val nextPlayer = if currentPlayer == Stone.Black then Stone.White else Stone.Black
+            gameLoop(newBoard, nextRng, nextOpenSpaces, nextPlayer, turn + 1)
+            
+          case None =>
+            println("Erro inesperado: O getWinner disse que havia jogadas, mas a peça falhou.")
 
- 
+  // 3. DAR O TIRO DE PARTIDA (Era isto que faltava!)
   Thread.sleep(2000)
   gameLoop(initialBoard, initialRng, initialOpenSpaces, Stone.Black, 1)
-  
-  
-  
-  

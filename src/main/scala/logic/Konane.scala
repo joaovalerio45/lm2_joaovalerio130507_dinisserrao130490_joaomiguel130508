@@ -161,4 +161,18 @@ object Konane {
 
     val allRows = buildRows(0, Nil).mkString("\n")
     s"$header\n$allRows"
+    // T5: Verificar Vencedor
+  def getWinner(board: Board, currentPlayerTurn: Stone, rows: Int, cols: Int): Option[Stone] =
+    // Chamamos a função pura para obter todas as jogadas possíveis deste jogador
+    val possibleMoves = allCaptureMoves(board, currentPlayerTurn, rows, cols)
+    
+    // Se a lista tiver elementos, o jogo continua (devolvemos None)
+    if possibleMoves.nonEmpty then 
+      None 
+    else
+      // Se a lista estiver vazia, este jogador perdeu. 
+      // Usamos Pattern Matching para descobrir quem é o adversário (o vencedor!)
+      currentPlayerTurn match
+        case Stone.Black => Some(Stone.White)
+        case Stone.White => Some(Stone.Black)
 }
