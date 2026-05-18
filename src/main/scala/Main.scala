@@ -30,18 +30,14 @@ object Main extends App:
       
     optBoard match
       case Some(newBoard) =>
-        // SUCESSO: A jogada foi feita!
         println(s">> As $currentPlayer saltaram e aterraram na casa ${optDest.get}")
         println(Konane.boardToString(newBoard, rows, cols))
         
-        // Determinar de quem é a próxima vez
         val nextPlayer = if currentPlayer == Stone.Black then Stone.White else Stone.Black
         
-        // Chamada recursiva para o próximo turno com tudo atualizado
         gameLoop(newBoard, nextRng, nextOpenSpaces, nextPlayer, turn + 1)
         
       case None =>
-        // FALHA: Não há mais jogadas válidas. Fim de jogo.
         val winner = if currentPlayer == Stone.Black then Stone.White else Stone.Black
         println(s"\n❌ FIM DE JOGO! As $currentPlayer não têm mais jogadas possíveis.")
         println(s"🏆 AS $winner VENCEM A PARTIDA! 🏆")
