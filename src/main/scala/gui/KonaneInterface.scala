@@ -78,7 +78,7 @@ class KonaneInterface extends Application {
       cols = colInput.getText.toIntOption.getOrElse(6).max(4).min(20)
       
       isVsBot = modeOptions.getValue == "Jogador vs Computador"
-      rng = MyRandom(System.currentTimeMillis()) // Semente aleatória para jogos diferentes
+      rng = MyRandom(1234L)
       
       initializeGameState()
       showGameView()
