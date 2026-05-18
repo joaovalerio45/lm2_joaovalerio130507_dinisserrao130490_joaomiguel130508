@@ -7,3 +7,9 @@ type Board = ParMap[Coord2D, Stone]
 
 enum Stone:
   case Black, White
+  
+case class GameState(
+  board: Board,
+  currentPlayer: Stone,
+  openSpaces: List[Coord2D]
+)
