@@ -15,6 +15,8 @@ import javafx.util.Duration
 import scala.annotation.tailrec
 import scala.collection.parallel.immutable.ParMap
 
+import scala.compiletime.uninitialized // Importação para o Scala 3.4+
+
 import logic.*
 
 class KonaneInterface extends Application {
@@ -44,8 +46,10 @@ class KonaneInterface extends Application {
   val boardGrid = new GridPane()
   val turnLabel = new Label("Turno: Pretas")
   val timerLabel = new Label("Tempo: 30s")
-  var gameTimeline: Timeline = _
-  var mainStage: Stage = _
+  
+  // CORREÇÃO DOS WARNINGS DO SCALA 3.4+
+  var gameTimeline: Timeline = uninitialized
+  var mainStage: Stage = uninitialized
 
   override def start(primaryStage: Stage): Unit = {
     mainStage = primaryStage
@@ -157,13 +161,14 @@ class KonaneInterface extends Application {
           history match {
             case head :: _ =>
               currentBoard = head.board
-              currentPlayer = head.currentPlayer
+              rng = head.rng
               openSpaces = head.openSpaces
+              currentPlayer = head.currentPlayer
+              forcedCaptureCoord = head.midTurnPiece // Extrai a peça do meio do turno
             case Nil =>
               resetGameEngine()
           }
-          selectedCoord = None
-          forcedCaptureCoord = None 
+          selectedCoord = forcedCaptureCoord // Repõe a seleção visual na peça correta
           resetTimer()
           turnLabel.setText(s"Turno: $currentPlayer")
           updateBoardUI()
@@ -185,7 +190,9 @@ class KonaneInterface extends Application {
     currentPlayer = Stone.Black
     selectedCoord = None
     forcedCaptureCoord = None
-    history = List(GameState(currentBoard, currentPlayer, openSpaces))
+    
+    // CORREÇÃO: Ordem (board, rng, openSpaces, currentPlayer, midTurnPiece)
+    history = List(GameState(currentBoard, rng, openSpaces, currentPlayer, forcedCaptureCoord))
     resetTimer()
     turnLabel.setText(s"Turno: $currentPlayer")
   }
@@ -203,13 +210,11 @@ class KonaneInterface extends Application {
       timerLabel.setText(s"Tempo: ${timeRemaining}s")
       
       if (timeRemaining <= 0) {
-        // Guarda o estado atual no histórico para permitir Undo desta perda de turno
-        val previousState = GameState(currentBoard, currentPlayer, openSpaces)
+        val previousState = GameState(currentBoard, rng, openSpaces, currentPlayer, forcedCaptureCoord)
         history = previousState :: history
         
         println(s"Tempo esgotado para o jogador $currentPlayer. O turno foi passado.")
         
-        // Passa o turno mantendo o tabuleiro inalterado
         executeGameStateTransition(currentBoard, openSpaces)
       }
     }))
@@ -281,7 +286,7 @@ class KonaneInterface extends Application {
   }
 
   def executeHumanMove(fromCoord: Coord2D, toCoord: Coord2D): Unit = {
-    val previousState = GameState(currentBoard, currentPlayer, openSpaces)
+    val previousState = GameState(currentBoard, rng, openSpaces, currentPlayer, forcedCaptureCoord)
     val (optBoard, newOpenSpaces) = Konane.play(currentBoard, currentPlayer, fromCoord, toCoord, openSpaces, rows, cols)
 
     optBoard match {
@@ -306,7 +311,7 @@ class KonaneInterface extends Application {
             executeGameStateTransition(newBoard, newOpenSpaces)
           }
         } else {
-          forcedCaptureCoord = None
+          forcedCaptureCoord = None 
           executeGameStateTransition(newBoard, newOpenSpaces)
         }
 
@@ -376,7 +381,7 @@ class KonaneInterface extends Application {
     val pause = new PauseTransition(Duration.seconds(0.7))
     
     pause.setOnFinished(_ => {
-      val previousState = GameState(currentBoard, currentPlayer, openSpaces)
+      val previousState = GameState(currentBoard, rng, openSpaces, currentPlayer, forcedCaptureCoord)
       
       val (optBoard, nextRng, nextOpenSpaces) = if (botDifficulty == "Difícil") {
         val allMoves = Konane.allCaptureMoves(currentBoard, currentPlayer, rows, cols)
