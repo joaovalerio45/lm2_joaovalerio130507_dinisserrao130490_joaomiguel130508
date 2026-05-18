@@ -16,18 +16,14 @@
         "classpath": [
             "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.8.1/scala3-library_3-3.8.1.jar",
             "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/21.0.2/javafx-base-21.0.2-mac-aarch64.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/21.0.2/javafx-controls-21.0.2-mac-aarch64.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/21.0.2/javafx-fxml-21.0.2-mac-aarch64.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/21.0.2/javafx-graphics-21.0.2-mac-aarch64.jar",
             "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/3.8.1/scala-library-3.8.1.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac-aarch64.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac-aarch64.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac-aarch64.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac-aarch64.jar",
-            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2.jar"
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/21.0.2/javafx-graphics-21.0.2.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/21.0.2/javafx-controls-21.0.2.jar",
+            "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/21.0.2/javafx-base-21.0.2.jar"
         ],
         "out": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508",
         "classesDir": "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/scala-3.8.1/classes",
@@ -149,18 +145,14 @@
                 "/Users/joaosavalerio/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/.bloop/lm2_joaovalerio130507_dinisserrao130490_joaomiguel130508/scala-3.8.1/classes",
                 "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.8.1/scala3-library_3-3.8.1.jar",
                 "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/21.0.2/javafx-base-21.0.2-mac-aarch64.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/21.0.2/javafx-controls-21.0.2-mac-aarch64.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/21.0.2/javafx-fxml-21.0.2-mac-aarch64.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/21.0.2/javafx-graphics-21.0.2-mac-aarch64.jar",
                 "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/3.8.1/scala-library-3.8.1.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac-aarch64.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac-aarch64.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac-aarch64.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac-aarch64.jar",
-                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2.jar"
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/21.0.2/javafx-graphics-21.0.2.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/21.0.2/javafx-controls-21.0.2.jar",
+                "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/21.0.2/javafx-base-21.0.2.jar"
             ]
         },
         "resolution": {
@@ -219,66 +211,66 @@
                 {
                     "organization": "org.openjfx",
                     "name": "javafx-graphics",
-                    "version": "17.0.2",
+                    "version": "21.0.2",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "javafx-graphics",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/21.0.2/javafx-graphics-21.0.2.jar"
                         },
                         {
                             "name": "javafx-graphics",
                             "classifier": "sources",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-sources.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/21.0.2/javafx-graphics-21.0.2-sources.jar"
                         },
                         {
                             "name": "javafx-graphics",
-                            "classifier": "mac",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac.jar"
+                            "classifier": "mac-aarch64",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-graphics/21.0.2/javafx-graphics-21.0.2-mac-aarch64.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.openjfx",
                     "name": "javafx-controls",
-                    "version": "17.0.2",
+                    "version": "21.0.2",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "javafx-controls",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/21.0.2/javafx-controls-21.0.2.jar"
                         },
                         {
                             "name": "javafx-controls",
                             "classifier": "sources",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-sources.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/21.0.2/javafx-controls-21.0.2-sources.jar"
                         },
                         {
                             "name": "javafx-controls",
-                            "classifier": "mac",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac.jar"
+                            "classifier": "mac-aarch64",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-controls/21.0.2/javafx-controls-21.0.2-mac-aarch64.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.openjfx",
                     "name": "javafx-base",
-                    "version": "17.0.2",
+                    "version": "21.0.2",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "javafx-base",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/21.0.2/javafx-base-21.0.2.jar"
                         },
                         {
                             "name": "javafx-base",
                             "classifier": "sources",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-sources.jar"
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/21.0.2/javafx-base-21.0.2-sources.jar"
                         },
                         {
                             "name": "javafx-base",
-                            "classifier": "mac",
-                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac.jar"
+                            "classifier": "mac-aarch64",
+                            "path": "/Users/joaosavalerio/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/openjfx/javafx-base/21.0.2/javafx-base-21.0.2-mac-aarch64.jar"
                         }
                     ]
                 }
