@@ -306,7 +306,7 @@ class KonaneInterface extends Application {
             executeGameStateTransition(newBoard, newOpenSpaces)
           }
         } else {
-          forcedCaptureCoord = None 
+          forcedCaptureCoord = None
           executeGameStateTransition(newBoard, newOpenSpaces)
         }
 

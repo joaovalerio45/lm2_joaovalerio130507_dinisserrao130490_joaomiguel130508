@@ -91,6 +91,15 @@ object Konane {
       val index = ((idx % lstOpenCoords.length) + lstOpenCoords.length) % lstOpenCoords.length
       (lstOpenCoords(index), nextRand)
 
+  def smartMove(lstOpenCoords: List[Coord2D], rand: MyRandom): (Coord2D, MyRandom) =
+    if lstOpenCoords.isEmpty then
+      ((-1, -1), rand)
+    else
+      // Em vez de ser aleatório, o PC tem uma heurística determinística.
+      // Por exemplo: escolhe sempre a casa que está mais perto do fim da lista,
+      // o que muda completamente a forma como o jogo se desenrola!
+      (lstOpenCoords.last, rand)
+
   // T2: play
   def play(board: Board, player: Stone, coordFrom: Coord2D, coordTo: Coord2D, lstOpenCoords: List[Coord2D], rows: Int, cols: Int): (Option[Board], List[Coord2D]) =
     if !board.get(coordFrom).contains(player) || board.contains(coordTo) then 

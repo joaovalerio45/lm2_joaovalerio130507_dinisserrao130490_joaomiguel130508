@@ -1,97 +1,231 @@
 import logic.*
 import scala.annotation.tailrec
-import scala.io.StdIn.readLine
+import scala.io.StdIn
 
 object Main extends App:
-  val rows = 6
-  val cols = 6
-  
-  println("=====================================")
-  println("      KŌNANE - INTERFACE TEXTUAL     ")
-  println("=====================================")
 
-  // 1. SETUP INICIAL & T6 (Temporizador Configurável)
-  print("⏱️ Defina o tempo máximo por jogada (em segundos): ")
-  // Se o utilizador der Enter sem escrever nada ou escrever letras, assume 5 segundos por defeito
-  val timeLimitSecs = readLine().toIntOption.getOrElse(5)
-  val timeLimitMs = timeLimitSecs * 1000L 
-  println(s"✅ Tempo limite configurado para $timeLimitSecs segundos.\n")
+  val MovePattern = """(\d+)\s+(\d+)\s+(\d+)\s+(\d+)""".r
 
-  val initialRng = MyRandom(12345L)
-  val initialBoard = Konane.initBoard(rows, cols)
-  val initialOpenSpaces = Konane.emptyCoords(initialBoard, rows, cols)
-  
-  // A nossa "fotografia" inicial (usa a Case Class que pusemos no Konane.scala)
-  val initialState = GameState(initialBoard, Stone.Black, initialOpenSpaces)
-  
-  // 2. A MÁQUINA DE ESTADOS (TUI Loop)
+  // Configuração inicial (agora com 1 Jogador por defeito)
+  val defaultConfig = GameConfig(rows = 6, cols = 6, timeLimitMs = 15000L, difficulty = "Fácil", numPlayers = 1)
+  mainMenu(defaultConfig)
+
+  // ==========================================
+  // MENU PRINCIPAL
+  // ==========================================
   @tailrec
-  def tuiLoop(history: List[GameState], rng: MyRandom, turn: Int): Unit =
-    val currentState = history.head 
-    
-    Konane.getWinner(currentState.board, currentState.currentPlayer, rows, cols) match
-      case Some(winner) =>
-        println(s"\n❌ FIM DE JOGO no Turno $turn!")
-        println(Konane.boardToString(currentState.board, rows, cols))
-        println(s"🏆 AS $winner VENCEM A PARTIDA! 🏆")
-        
-      case None =>
-        println(s"\n--- Turno $turn: Vez das ${currentState.currentPlayer} ---")
-        println(Konane.boardToString(currentState.board, rows, cols))
-        
-        println("\nEscolha uma ação:")
-        println("1 - Fazer Jogada (Computador)")
-        println("2 - Undo (Anular última jogada)")
-        println("3 - Sair do Jogo")
-        print("Opção: ")
-        
-        readLine() match
-          case "1" =>
-            // T6: TEMPORIZADOR - Iniciar contagem
-            val startTime = System.currentTimeMillis()
-            
-            val (optBoard, nextRng, nextOpenSpaces, optDest) = 
-              Konane.playRandomly(currentState.board, rng, currentState.currentPlayer, currentState.openSpaces, Konane.randomMove, rows, cols)
-              
-            // T6: TEMPORIZADOR - Parar contagem
-            val endTime = System.currentTimeMillis()
-            val timeTaken = endTime - startTime
-            
-            // T6: Validar Limite de Tempo
-            if timeTaken > timeLimitMs then
-              println(s"\n⚠️ TEMPO ESGOTADO! O cálculo demorou ${timeTaken}ms (limite: ${timeLimitMs}ms).")
-              println("A jogada foi anulada. Tente novamente.")
-              tuiLoop(history, nextRng, turn) // Repete o turno sem atualizar o histórico
-            else
-              optBoard match
-                case Some(newBoard) =>
-                  println(s"\n>> [SUCESSO] Peça saltou para ${optDest.get}. Tempo de execução: ${timeTaken}ms")
-                  val nextPlayer = if currentState.currentPlayer == Stone.Black then Stone.White else Stone.Black
-                  val newState = GameState(newBoard, nextPlayer, nextOpenSpaces)
-                  
-                  // Avança para o próximo turno com a nova fotografia no histórico
-                  tuiLoop(newState :: history, nextRng, turn + 1)
-                  
-                case None =>
-                  println("Erro inesperado.")
-                  tuiLoop(history, nextRng, turn)
-                
-          case "2" =>
-            // T6: UNDO - Chamada à função pura na Camada de Negócio!
-            Konane.undo(history) match
-              case Some(previousHistory) =>
-                println("\n⏪ UNDO ATIVADO: A voltar atrás no tempo...")
-                tuiLoop(previousHistory, rng, turn - 2)
-              case None =>
-                println("\n⚠️ Não há jogadas suficientes no histórico para fazer Undo!")
-                tuiLoop(history, rng, turn)
-              
-          case "3" =>
-            println("\nA sair do jogo. Até à próxima!")
-            
-          case _ =>
-            println("\n⚠️ Opção inválida! Escolha 1, 2 ou 3.")
-            tuiLoop(history, rng, turn)
+  def mainMenu(config: GameConfig): Unit =
+    println("\n" + "="*40)
+    println("        KŌNANE - MENU PRINCIPAL       ")
+    println("="*40)
+    val modeStr = if config.numPlayers == 1 then "1 Jogador (vs Computador)" else "2 Jogadores (Humano vs Humano)"
+    println(s"1. Jogar [$modeStr]")
+    println("2. Configurações")
+    println("3. Sair")
+    print("Escolha uma opção: ")
 
-  // 3. ARRANCAR O JOGO
-  tuiLoop(List(initialState), initialRng, 1)
+    StdIn.readLine().trim match
+      case "1" =>
+        val initialRng = MyRandom(12345L)
+        val initialBoard = Konane.initBoard(config.rows, config.cols)
+        val initialOpenSpaces = Konane.emptyCoords(initialBoard, config.rows, config.cols)
+        val initialState = GameState(initialBoard, initialRng, initialOpenSpaces, Stone.Black)
+
+        println("\n>>> A INICIAR O JOGO <<<")
+        gameLoop(initialState, Nil, 1, config)
+        mainMenu(config)
+
+      case "2" =>
+        val newConfig = settingsMenu(config)
+        mainMenu(newConfig)
+
+      case "3" =>
+        println("A sair do jogo...")
+
+      case _ =>
+        println("❌ Opção inválida.")
+        mainMenu(config)
+
+  // ==========================================
+  // MENU DE CONFIGURAÇÕES
+  // ==========================================
+  @tailrec
+  def settingsMenu(config: GameConfig): GameConfig =
+    println("\n--- CONFIGURAÇÕES ---")
+    println(s"1. Número de Jogadores: ${config.numPlayers}")
+    println(s"2. Dimensões do Tabuleiro: ${config.rows}x${config.cols}")
+    println(s"3. Tempo Máximo (segundos): ${config.timeLimitMs / 1000}s")
+    println(s"4. Dificuldade do PC: ${config.difficulty}")
+    println("5. Voltar ao Menu Principal")
+    print("Escolha o que alterar: ")
+
+    StdIn.readLine().trim match
+      case "1" =>
+        val newPlayers = if config.numPlayers == 1 then 2 else 1
+        println(s"Modo alterado para $newPlayers Jogador(es).")
+        settingsMenu(config.copy(numPlayers = newPlayers))
+
+      case "2" =>
+        print("Novas dimensões (ex: 8): ")
+        val size = StdIn.readLine().trim.toIntOption.getOrElse(6)
+        settingsMenu(config.copy(rows = size, cols = size))
+
+      case "3" =>
+        print("Novo tempo limite em segundos: ")
+        val secs = StdIn.readLine().trim.toLongOption.getOrElse(15L)
+        settingsMenu(config.copy(timeLimitMs = secs * 1000L))
+
+      case "4" =>
+        val newDiff = if config.difficulty == "Fácil" then "Difícil" else "Fácil"
+        println(s"Dificuldade alterada para: $newDiff")
+        settingsMenu(config.copy(difficulty = newDiff))
+
+      case "5" =>
+        config
+
+      case _ =>
+        println("❌ Opção inválida.")
+        settingsMenu(config)
+
+  // ==========================================
+  // MOTOR DO JOGO
+  // ==========================================
+  @tailrec
+  def gameLoop(
+                state: GameState,
+                history: List[GameState],
+                turn: Int,
+                config: GameConfig
+              ): Unit =
+
+    Konane.getWinner(state.board, state.currentPlayer, config.rows, config.cols) match
+      // Só declara vitória se o jogador não estiver a meio de uma jogada
+      case Some(winner) if state.midTurnPiece.isEmpty =>
+        println(s"\n❌ FIM DE JOGO! 🏆 AS $winner VENCEM A PARTIDA! 🏆")
+
+      case _ =>
+        // T7: MÚLTIPLOS SALTOS (Continuar ou Parar)
+        if state.midTurnPiece.isDefined then
+          println(s"\n--- Turno $turn: As ${state.currentPlayer} podem continuar a saltar! ---")
+          println(s"⚠️ A sua peça aterrou em ${state.midTurnPiece.get}. Pode fazer outro salto ou parar.")
+        else
+          println(s"\n--- Turno $turn: Vez das ${state.currentPlayer} ---")
+
+        println(Konane.boardToString(state.board, config.rows, config.cols))
+
+        // A MAGIA DO MULTIPLAYER: Só é turno do computador se for 1 Player E a cor for White.
+        val isComputerTurn = config.numPlayers == 1 && state.currentPlayer == Stone.White
+
+        if !isComputerTurn then
+          // ---------------------------------------------------------
+          // TURNO HUMANO (Serve para as Black, e para as White se for 2 Jogadores)
+          // ---------------------------------------------------------
+          val commands = if state.midTurnPiece.isDefined then "'r c r c' para continuar ou 'stop' para parar"
+          else "'r c r c' | 'undo' | 'restart' | 'quit'"
+
+          print(s"Comando ($commands): ")
+
+          val startTime = System.currentTimeMillis()
+          val input = StdIn.readLine().trim.toLowerCase
+          val elapsed = System.currentTimeMillis() - startTime
+
+          if input == "quit" then ()
+          else if input == "restart" then
+            println("\n🔄 A reiniciar...")
+            val initialBoard = Konane.initBoard(config.rows, config.cols)
+            val initialOpenSpaces = Konane.emptyCoords(initialBoard, config.rows, config.cols)
+            gameLoop(GameState(initialBoard, MyRandom(12345L), initialOpenSpaces, Stone.Black), Nil, 1, config)
+
+          else if elapsed > config.timeLimitMs then
+            val adversario = if state.currentPlayer == Stone.Black then Stone.White else Stone.Black
+            println(s"⏰ TEMPO ESGOTADO! Demorou ${elapsed / 1000}s.")
+            println(s"🏆 AS $adversario VENCEM POR DESISTÊNCIA! 🏆")
+
+          else
+            input match
+              case "undo" if state.midTurnPiece.isEmpty =>
+                val stepsToUndo = if config.numPlayers == 1 then 2 else 1
+                if history.length >= stepsToUndo then
+                  val stateToRestore = if stepsToUndo == 2 then history(1) else history.head
+                  val newHistory = if stepsToUndo == 2 then history.drop(2) else history.tail
+                  println("\n⏪ UNDO ATIVADO!")
+                  gameLoop(stateToRestore, newHistory, turn - stepsToUndo, config)
+                else
+                  println("\n❌ Não há histórico suficiente.")
+                  gameLoop(state, history, turn, config)
+
+              case "undo" =>
+                println("❌ Não pode fazer undo a meio de um salto múltiplo. Use 'stop' primeiro.")
+                gameLoop(state, history, turn, config)
+
+              // T7: Ação de PARAR capturas múltiplas
+              case "stop" if state.midTurnPiece.isDefined =>
+                val nextPlayer = if state.currentPlayer == Stone.Black then Stone.White else Stone.Black
+                val nextState = state.copy(currentPlayer = nextPlayer, midTurnPiece = None)
+                // Passa a vez ao adversário e guarda no histórico
+                gameLoop(nextState, state :: history, turn + 1, config)
+
+              case "stop" =>
+                println("❌ O comando 'stop' só serve para parar saltos secundários.")
+                gameLoop(state, history, turn, config)
+
+              // T7: Ação de CONTINUAR a jogar (ou jogada normal)
+              case MovePattern(r1, c1, r2, c2) =>
+                val coordFrom = (r1.toInt, c1.toInt)
+                val coordTo = (r2.toInt, c2.toInt)
+
+                // Regra extra: se está a meio de um salto, tem de usar a mesma peça!
+                if state.midTurnPiece.isDefined && state.midTurnPiece.get != coordFrom then
+                  println("❌ Erro: Tem de continuar o salto com a mesma peça ou usar 'stop'!")
+                  gameLoop(state, history, turn, config)
+                else
+                  val (optBoard, newOpen) = Konane.play(state.board, state.currentPlayer, coordFrom, coordTo, state.openSpaces, config.rows, config.cols)
+
+                  optBoard match
+                    case Some(newBoard) =>
+                      // Verifica se a peça que acabou de aterrar pode saltar de novo
+                      val canJumpAgain = Konane.allCaptureMoves(newBoard, state.currentPlayer, config.rows, config.cols).exists(_._1 == coordTo)
+
+                      if canJumpAgain then
+                        // Pode continuar! O currentPlayer mantém-se.
+                        val nextState = GameState(newBoard, state.rng, newOpen, state.currentPlayer, Some(coordTo))
+                        gameLoop(nextState, history, turn, config) // Não guardamos o histórico a meio do salto
+                      else
+                        // Não há mais saltos. Passa a vez automaticamente.
+                        val nextPlayer = if state.currentPlayer == Stone.Black then Stone.White else Stone.Black
+                        val nextState = GameState(newBoard, state.rng, newOpen, nextPlayer, None)
+                        gameLoop(nextState, state :: history, turn + 1, config)
+
+                    case None =>
+                      println("\n❌ Jogada Inválida. Tente de novo.")
+                      gameLoop(state, history, turn, config)
+
+              case _ =>
+                println("\n❌ Comando Inválido.")
+                gameLoop(state, history, turn, config)
+
+        else
+          // ---------------------------------------------------------
+          // TURNO DO COMPUTADOR (Só entra aqui se for 1 Player)
+          // ---------------------------------------------------------
+          println("Computador a pensar...")
+          val startTime = System.currentTimeMillis()
+
+          val aiFunction = if config.difficulty == "Fácil" then Konane.randomMove else Konane.smartMove
+
+          val (optBoard, nextRng, nextOpenSpaces, optDest) =
+            Konane.playRandomly(state.board, state.rng, state.currentPlayer, state.openSpaces, aiFunction, config.rows, config.cols)
+
+          val elapsed = System.currentTimeMillis() - startTime
+
+          if elapsed > config.timeLimitMs then
+            println(s"⏰ TEMPO ESGOTADO DO PC! (${elapsed}ms). 🏆 AS Black VENCEM! 🏆")
+          else
+            optBoard match
+              case Some(newBoard) =>
+                println(s">> O PC saltou para ${optDest.get} (em ${elapsed}ms)")
+                // O Computador no nosso código para sempre após 1 salto (estratégia simples)
+                val nextState = GameState(newBoard, nextRng, nextOpenSpaces, Stone.Black, None)
+                gameLoop(nextState, state :: history, turn + 1, config)
+              case None =>
+                println("Erro: Computador falhou ao jogar.")
