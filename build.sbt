@@ -18,3 +18,5 @@ lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics")
 libraryDependencies ++= javaFXModules.map(m =>
   "org.openjfx" % s"javafx-$m" % "21.0.2" classifier osName
 )
+
+run / connectInput := true
